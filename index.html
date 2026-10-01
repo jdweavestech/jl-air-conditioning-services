@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JL Air Conditioning Services</title>
+<meta name="description" content="Aircon cleaning, repair, freon recharge, installation and brand-new units for homes, offices and shops.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader" role="status" aria-label="Loading JL Air Conditioning Services">
+  <div class="pl-inner">
+    <div class="pl-unit">
+      <svg viewBox="0 0 260 170" aria-hidden="true">
+        <rect x="20" y="20" width="220" height="100" rx="14" fill="none" stroke="currentColor" stroke-width="3"/>
+        <circle cx="130" cy="70" r="36" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2"/>
+        <g class="pl-fan" fill="currentColor"><path d="M130 70 C120 56 121 42 130 36 C140 42 141 56 130 70Z"/><path d="M130 70 C120 56 121 42 130 36 C140 42 141 56 130 70Z" transform="rotate(120 130 70)"/><path d="M130 70 C120 56 121 42 130 36 C140 42 141 56 130 70Z" transform="rotate(240 130 70)"/><circle cx="130" cy="70" r="6"/></g>
+        <g stroke="currentColor" stroke-opacity=".35" stroke-width="2.5">
+          <line x1="190" y1="45" x2="225" y2="45"/><line x1="190" y1="58" x2="225" y2="58"/><line x1="190" y1="71" x2="225" y2="71"/><line x1="190" y1="84" x2="225" y2="84"/><line x1="190" y1="97" x2="225" y2="97"/>
+          <line x1="35" y1="45" x2="70" y2="45"/><line x1="35" y1="58" x2="70" y2="58"/><line x1="35" y1="71" x2="70" y2="71"/><line x1="35" y1="84" x2="70" y2="84"/><line x1="35" y1="97" x2="70" y2="97"/>
+        </g>
+        <g class="pl-air" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7">
+          <path d="M70 135 q15 10 30 0 t30 0 t30 0 t30 0"/><path d="M85 155 q12 8 24 0 t24 0 t24 0 t24 0"/>
+        </g>
+      </svg>
+    </div>
+    <div class="pl-temp"><span id="plTemp">32</span><sup>°C</sup></div>
+    <div class="pl-lbl" id="plLbl">Cooling the room…</div>
+    <div class="pl-bar"><i id="plBar"></i></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="brand-mark">JL</span><span>JL Air Conditioning<small>Services · Repair · Install</small></span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#prices">Prices</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#sizing">Sizing guide</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#book">Contact</a></li>
+    </ul>
+    <a href="#book" class="btn btn-ice">Book a service</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow hero-in">Aircon cleaning · repair · installation</p>
+        <h1 class="hero-in" style="margin-top:18px">Outside it's <span class="hot">34°</span>.<br>Inside, it should be <span class="cool">cool</span>.</h1>
+        <p class="hero-lede hero-in">JL Air Conditioning Services keeps window-type, split-type and inverter units running cold and efficient. We clean, repair, recharge and install for homes, offices and small shops.</p>
+        <div class="hero-cta hero-in">
+          <a href="#book" class="btn btn-ice magnetic">Book a service →</a>
+          <a href="#services" class="btn btn-ghost magnetic">See services & rates</a>
+        </div>
+        <div class="hero-meta hero-in"><span>Licensed technicians</span><span>All major brands</span><span>30-day service warranty</span></div>
+      </div>
+      <div class="thermo" aria-label="Thermostat illustration cooling from 34 to 24 degrees">
+        <svg viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <linearGradient id="arcGrad" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="var(--ice)"/><stop offset="1" stop-color="var(--sun)"/>
+            </linearGradient>
+          </defs>
+          <circle cx="200" cy="200" r="190" fill="var(--surface)" stroke="var(--line)"/>
+          <g id="ticks"></g>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="var(--surface-2)" stroke-width="14" stroke-linecap="round" stroke-dasharray="706.9 942.5" transform="rotate(135 200 200)"/>
+          <circle id="arc" cx="200" cy="200" r="150" fill="none" stroke="var(--sun)" stroke-width="14" stroke-linecap="round" stroke-dasharray="0 942.5" transform="rotate(135 200 200)"/>
+          <circle id="knob" cx="200" cy="50" r="11" fill="var(--surface)" stroke="var(--sun)" stroke-width="5"/>
+          <g id="flow" stroke="var(--ice)" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".55">
+            <path d="M120 300 q20 -12 40 0 t40 0 t40 0 t40 0" stroke-dasharray="14 10"/>
+            <path d="M135 318 q18 -10 36 0 t36 0 t36 0 t36 0" stroke-dasharray="10 12"/>
+          </g>
+        </svg>
+        <div class="thermo-readout">
+          <div>
+            <div class="t"><span id="temp">34</span><sup>°C</sup></div>
+            <div class="lbl" id="tempLbl">Room temp · before</div>
+            <div class="mode"><b class="on" id="mCool">COOL</b><b>FAN</b><b>DRY</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="Brands we service">
+    <div class="ticker-track" id="ticker">
+      <span>Carrier</span><span>Koppel</span><span>Daikin</span><span>Panasonic</span><span>LG</span><span>Samsung</span><span>Condura</span><span>Kolin</span><span>Aux</span><span>TCL</span><span>Midea</span><span>Fujidenzo</span>
+    </div>
+  </div>
+
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><p class="eyebrow">Services</p><h2>Everything your aircon needs, under one call.</h2></div>
+        <p>Rates below are starting prices per unit. We confirm the final quote after inspection, before any work starts.</p>
+      </div>
+      <div class="svc-grid" id="svcGrid">
+        <article class="svc">
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M14 8c4 6 4 10 0 16M24 6c4 6 4 12 0 18M34 8c4 6 4 10 0 16"/><path d="M8 32h32M12 40h24"/></svg>
+          <h3>General cleaning</h3>
+          <p>Filter wash, coil and blower cleaning, drain flush, and a temperature check before we leave.</p>
+          <ul><li>Window-type</li><li>Split-type</li><li>~1–2 hrs</li></ul>
+          <div class="price">from <b>₱800</b></div>
+        </article>
+        <article class="svc">
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="6" y="10" width="36" height="20" rx="4"/><path d="M12 24h24M18 36l-3 6M30 36l3 6M24 36v6"/></svg>
+          <h3>Chemical deep wash</h3>
+          <p>Pull-down overhaul with coil chemicals for units that smell, drip or have lost cooling power.</p>
+          <ul><li>Pull-down</li><li>Anti-mold</li><li>~2–3 hrs</li></ul>
+          <div class="price">from <b>₱1,800</b></div>
+        </article>
+        <article class="svc">
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M28 8l12 12-18 18H10V26z"/><path d="M24 12l12 12"/></svg>
+          <h3>Repair & troubleshooting</h3>
+          <p>Not cooling, tripping breakers, error codes, noisy fans. We diagnose on site and quote parts upfront.</p>
+          <ul><li>Capacitors</li><li>Fan motors</li><li>PCB</li></ul>
+          <div class="price">diagnosis <b>₱500</b></div>
+        </article>
+        <article class="svc">
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6h12v10a6 6 0 0 1-12 0z"/><path d="M24 22v8"/><circle cx="24" cy="36" r="6"/></svg>
+          <h3>Freon recharge</h3>
+          <p>Leak test, vacuum and refrigerant top-up for R22, R410A and R32 systems.</p>
+          <ul><li>Leak test</li><li>R32 / R410A</li><li>Pressure check</li></ul>
+          <div class="price">from <b>₱1,500</b></div>
+        </article>
+        <article class="svc">
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="6" y="8" width="36" height="14" rx="3"/><rect x="12" y="28" width="24" height="14" rx="3"/><circle cx="24" cy="35" r="3.5"/><path d="M24 22v6"/></svg>
+          <h3>Installation</h3>
+          <p>New split-type and window-type installs, including bracket, piping, wiring and vacuum.</p>
+          <ul><li>Up to 10 ft piping</li><li>Mounting</li><li>Test run</li></ul>
+          <div class="price">from <b>₱3,500</b></div>
+        </article>
+        <article class="svc">
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="8" y="10" width="32" height="30" rx="4"/><path d="M8 18h32M16 6v8M32 6v8M15 26h6M15 32h6M27 26h6"/></svg>
+          <h3>Maintenance plans</h3>
+          <p>Scheduled cleaning every 3 or 6 months for homes, offices, clinics and restaurants with several units.</p>
+          <ul><li>Quarterly</li><li>Semi-annual</li><li>Priority repair</li></ul>
+          <div class="price">per quote <b>Call us</b></div>
+        </article>
+      </div>
+      <p class="note">Rates shown are sample starting prices. Final price depends on unit type, horsepower and site access.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="prices" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><p class="eyebrow">Pricelist</p><h2>Brand-new aircon units.</h2></div>
+        <p>Brand-new units with full manufacturer warranty. Prices include VAT. The installed price includes our standard installation.</p>
+      </div>
+      <div class="price-head">
+        <div class="filters" id="priceTabs" role="group" aria-label="Unit type">
+          <button aria-pressed="true" data-t="window">Window-type</button>
+          <button aria-pressed="false" data-t="window-inv">Window inverter</button>
+          <button aria-pressed="false" data-t="split">Split-type inverter</button>
+        </div>
+        <span class="mono" style="font-size:13px;color:var(--muted)" id="priceCount"></span>
+      </div>
+      <div class="price-wrap reveal">
+        <table class="price-table">
+          <thead><tr><th>Brand / series</th><th>Capacity</th><th>Unit price</th><th>Installed</th><th><span class="sr-only">Inquire</span></th></tr></thead>
+          <tbody id="priceBody"></tbody>
+        </table>
+      </div>
+      <p class="note">Sample prices. Update them to your current stock and supplier prices. Standard installation: window-type ₱1,000; split-type ₱3,500 (up to 10 ft piping). Extra piping and brackets are quoted on site.</p>
+    </div>
+  </section>
+
+  <section class="sec process" id="process">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><p class="eyebrow">How it works</p><h2>From booking to cold air in four steps.</h2></div>
+        <p>Most cleaning jobs finish in one visit. Repairs that need parts get a written quote first.</p>
+      </div>
+      <ol class="steps">
+        <li class="step"><span class="bar"></span><h3>Book</h3><p>Call, text or send the form. Tell us the brand, type and horsepower if you know it.</p></li>
+        <li class="step"><span class="bar"></span><h3>Inspect</h3><p>A technician checks airflow, amperage, refrigerant pressure and drainage.</p></li>
+        <li class="step"><span class="bar"></span><h3>Service</h3><p>We clean or repair with drop cloths and covers so your room stays clean.</p></li>
+        <li class="step"><span class="bar"></span><h3>Test & warranty</h3><p>We measure the outlet temperature with you and leave a service sticker with the date.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="gallery">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><p class="eyebrow">Gallery</p><h2>Recent work on the job.</h2></div>
+        <div class="filters" role="group" aria-label="Filter gallery">
+          <button aria-pressed="true" data-f="all">All</button>
+          <button aria-pressed="false" data-f="cleaning">Cleaning</button>
+          <button aria-pressed="false" data-f="install">Installation</button>
+          <button aria-pressed="false" data-f="repair">Repair</button>
+        </div>
+      </div>
+      <div class="gallery" id="gallery-grid"></div>
+      <p class="note">Gallery shows illustrated placeholders. Replace each with your own before-and-after job photos.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="photos" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><p class="eyebrow">Photos</p><h2>On the job and with our clients.</h2></div>
+        <div class="filters" id="photoTabs" role="group" aria-label="Filter photos">
+          <button aria-pressed="true" data-g="all">All</button>
+          <button aria-pressed="false" data-g="job">On the job</button>
+          <button aria-pressed="false" data-g="client">Past clients</button>
+        </div>
+      </div>
+      <!-- To add your photos: put the image in the images/ folder and copy one <button class="ph-item"> line below.
+           data-g="job" for work photos, data-g="client" for client photos. -->
+      <div class="photos" id="photoGrid">
+        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Indoor unit pull-down cleaning" data-desc="Technician cleaning the blower and evaporator coil of a split-type unit."><img src="images/work-1.jpg" alt="Indoor unit pull-down cleaning" width="1200" height="900" loading="lazy"><span class="g-cap">Indoor unit pull-down cleaning<span>On the job</span></span></button>
+        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Residential client · 3 units" data-desc="Quarterly cleaning for a family home with three split-type units."><img src="images/client-1.jpg" alt="Residential client · 3 units" width="1200" height="900" loading="lazy"><span class="g-cap">Residential client · 3 units<span>Past client</span></span></button>
+        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Outdoor unit coil wash" data-desc="Pressure washing the condenser coil on a rooftop outdoor unit."><img src="images/work-2.jpg" alt="Outdoor unit coil wash" width="900" height="1200" loading="lazy"><span class="g-cap">Outdoor unit coil wash<span>On the job</span></span></button>
+        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Restaurant · maintenance plan" data-desc="Semi-annual maintenance for a dining area and kitchen units."><img src="images/client-2.jpg" alt="Restaurant · maintenance plan" width="900" height="1200" loading="lazy"><span class="g-cap">Restaurant · maintenance plan<span>Past client</span></span></button>
+        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Split-type installation" data-desc="Mounting the bracket and running copper piping for a new install."><img src="images/work-3.jpg" alt="Split-type installation" width="1200" height="800" loading="lazy"><span class="g-cap">Split-type installation<span>On the job</span></span></button>
+        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Clinic waiting area" data-desc="Window-type replacement and cleaning for a medical clinic."><img src="images/client-3.jpg" alt="Clinic waiting area" width="1200" height="800" loading="lazy"><span class="g-cap">Clinic waiting area<span>Past client</span></span></button>
+        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Freon pressure check" data-desc="Reading manifold gauges before a refrigerant top-up."><img src="images/work-4.jpg" alt="Freon pressure check" width="1200" height="900" loading="lazy"><span class="g-cap">Freon pressure check<span>On the job</span></span></button>
+        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Office · 6 units" data-desc="Deep wash and repair for a small office floor."><img src="images/client-4.jpg" alt="Office · 6 units" width="1200" height="900" loading="lazy"><span class="g-cap">Office · 6 units<span>Past client</span></span></button>
+      </div>
+      <p class="note">These are placeholder images. Replace the files in the images/ folder with your own photos, keeping the same file names.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="sizing" style="padding-top:0">
+    <div class="wrap why">
+      <div class="reveal">
+        <p class="eyebrow">Sizing guide</p>
+        <h2 style="font-size:clamp(32px,4.4vw,52px);margin-top:14px">What horsepower does your room need?</h2>
+        <p style="color:var(--muted);margin-top:16px;max-width:48ch">An undersized unit runs nonstop and still feels warm. An oversized one cycles on and off and leaves the room damp. Use this as a starting point; we confirm on site.</p>
+        <div class="calc" style="margin-top:28px">
+          <label for="area">Room floor area: <span class="mono" id="areaVal">15</span> m²</label>
+          <input type="range" id="area" min="6" max="50" value="15">
+          <div class="calc-out"><span class="mono" style="color:var(--muted);font-size:13px">Recommended</span><b id="hpOut">1.0 HP</b></div>
+          <p class="note" id="hpNote" style="margin-top:8px">Bedroom-sized. Add 0.5 HP for west-facing rooms or kitchens.</p>
+        </div>
+      </div>
+      <div class="reveal" style="min-width:0">
+        <div style="overflow-x:auto">
+          <table class="hp-table" id="hpTable">
+            <thead><tr><th>Capacity</th><th>Approx. BTU/hr</th><th>Room size</th></tr></thead>
+            <tbody>
+              <tr data-max="12"><td>0.5–0.75 HP</td><td>5,000–7,000</td><td>up to 12 m²</td></tr>
+              <tr data-max="18"><td>1.0 HP</td><td>9,000</td><td>12–18 m²</td></tr>
+              <tr data-max="25"><td>1.5 HP</td><td>12,000</td><td>18–25 m²</td></tr>
+              <tr data-max="35"><td>2.0 HP</td><td>18,000</td><td>25–35 m²</td></tr>
+              <tr data-max="50"><td>2.5–3.0 HP</td><td>24,000</td><td>35–50 m²</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="perks">
+          <li><div><b>Clean every 3–6 months</b><span>Dust on the coil can cut cooling efficiency and raise your electric bill.</span></div></li>
+          <li><div><b>Upfront quotes</b><span>You approve the price before we open the unit.</span></div></li>
+          <li><div><b>30-day service warranty</b><span>If the same problem comes back within 30 days, we return at no labor cost.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal"><div><p class="eyebrow">FAQ</p><h2>Common questions.</h2></div></div>
+      <div class="faq">
+        <details><summary>How often should I have my aircon cleaned?</summary><p>For daily home use, every 3 to 6 months. Units in dusty areas, near roads, or in restaurants and kitchens need cleaning every 2 to 3 months.</p></details>
+        <details><summary>My aircon is running but not cooling. What's wrong?</summary><p>The usual causes are a clogged filter or coil, low refrigerant from a leak, or a failed capacitor on the outdoor unit. Book a diagnosis and we'll tell you which one before any repair.</p></details>
+        <details><summary>Do you service inverter units?</summary><p>Yes. We clean, troubleshoot and repair inverter split-types, including reading error codes from the indoor display.</p></details>
+        <details><summary>Why is water dripping from my indoor unit?</summary><p>Usually a blocked drain line or a dirty coil that freezes and then melts. A general cleaning with a drain flush fixes most cases.</p></details>
+        <details><summary>How do I pay?</summary><p>Cash, GCash or bank transfer after the job is finished and tested.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec book" id="book">
+    <div class="wrap book-grid">
+      <div class="reveal">
+        <p class="eyebrow">Book a service</p>
+        <h2 style="font-size:clamp(34px,5vw,58px);margin-top:14px">Tell us what's wrong. We'll bring the tools.</h2>
+        <p style="color:var(--muted);margin-top:16px;max-width:44ch">Open Monday to Saturday, 8:00 AM to 6:00 PM. Same-day visits when the schedule allows.</p>
+        <div class="contact-list">
+          <div class="contact-row"><div><small>Call or text</small><a class="val" id="phone" href="tel:+639170000000">0917 000 0000</a></div><button class="copy" data-copy="phone">Copy</button></div>
+          <div class="contact-row"><div><small>Email</small><a class="val" id="email" href="mailto:hello@jlaircon.ph?subject=Aircon%20service%20inquiry">hello@jlaircon.ph</a></div><button class="copy" data-copy="email">Copy</button></div>
+          <div class="contact-row"><div><small>Facebook</small><a class="val" href="https://www.facebook.com/" target="_blank" rel="noopener">JL Air Conditioning Services</a></div><a class="copy" href="https://www.facebook.com/" target="_blank" rel="noopener" style="text-decoration:none">Open page ↗</a></div><!-- Replace https://www.facebook.com/ (twice above) with your Facebook page URL -->
+        </div>
+      </div>
+      <form id="bookForm" novalidate class="reveal">
+        <div class="field"><label for="fName">Name</label><input id="fName" required autocomplete="name" placeholder="Juan Dela Cruz"></div>
+        <div class="field"><label for="fPhone">Mobile</label><input id="fPhone" required inputmode="tel" autocomplete="tel" placeholder="09XX XXX XXXX"></div>
+        <div class="field"><label for="fService">Service</label>
+          <select id="fService"><option>General cleaning</option><option>Chemical deep wash</option><option>Repair & troubleshooting</option><option>Freon recharge</option><option>Installation</option><option>Maintenance plan</option><option>Buy a new unit</option><option>Others</option></select></div>
+        <div class="field"><label for="fType">Unit type</label>
+          <select id="fType"><option>Window-type</option><option>Split-type</option><option>Inverter split-type</option><option>Floor-mounted / cassette</option><option>Not sure</option></select></div>
+        <div class="field"><label for="fUnits">No. of units</label><input id="fUnits" type="number" min="1" value="1"></div>
+        <div class="field"><label for="fDate">Preferred date</label><input id="fDate" type="date"></div>
+        <div class="field full"><label for="fAddr">Address</label><input id="fAddr" required autocomplete="street-address" placeholder="Street, barangay, city"></div>
+        <div class="field full"><label for="fNotes">What's the problem?</label><textarea id="fNotes" placeholder="e.g. 1.5 HP split-type, not cooling, dripping water"></textarea></div>
+        <div class="field full"><button class="btn btn-ice magnetic" type="submit" style="justify-self:start">Prepare booking request</button></div>
+        <div class="form-msg" id="formMsg" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 JL Air Conditioning Services</span><span><a href="tel:+639170000000">0917 000 0000</a> · <a href="mailto:hello@jlaircon.ph">hello@jlaircon.ph</a> · <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></span></div></footer>
+<a href="#book" class="btn btn-ice float-call" id="floatBtn">Book now</a>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Gallery image">
+  <div class="lb-card">
+    <div class="lb-art" id="lbArt"></div>
+    <div class="lb-body">
+      <div style="min-width:0;flex:1"><span class="eyebrow" id="lbTag"></span><h3 id="lbTitle" style="margin-top:8px"></h3><p id="lbDesc"></p></div>
+      <div class="lb-nav"><button class="icon-btn" id="lbPrev" aria-label="Previous">←</button><button class="icon-btn" id="lbNext" aria-label="Next">→</button><button class="icon-btn" id="lbClose" aria-label="Close">✕</button></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
