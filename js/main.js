@@ -79,8 +79,8 @@ document.addEventListener('keydown', e => {
 });
 
   /* ---------- Filters ---------- */
-  document.querySelectorAll('#gallery .filters button').forEach(btn=>btn.addEventListener('click',()=>{
-    document.querySelectorAll('#gallery .filters button').forEach(b=>b.setAttribute('aria-pressed',b===btn));
+  document.querySelectorAll('#our-work .filters button').forEach(btn=>btn.addEventListener('click',()=>{
+    document.querySelectorAll('#our-work .filters button').forEach(b=>b.setAttribute('aria-pressed',b===btn));
     const f=btn.dataset.f; const els=[...grid.children];
     const show = els.filter(el=>f==='all'||el.dataset.f===f);
     visible = show.map(el=>+el.dataset.i);
