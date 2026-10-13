@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jlairconditioningservices.vercel.app/sitemap.xml
