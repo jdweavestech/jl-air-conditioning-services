@@ -110,70 +110,162 @@
           <h3>General cleaning</h3>
           <p>Filter wash, coil and blower cleaning, drain flush, and a temperature check before we leave.</p>
           <ul><li>Window-type</li><li>Split-type</li><li>~1–2 hrs</li></ul>
-          <div class="price">from <b>₱800</b></div>
+          <!-- <div class="price">from <b>₱800</b></div> -->
         </article>
         <article class="svc">
           <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="6" y="10" width="36" height="20" rx="4"/><path d="M12 24h24M18 36l-3 6M30 36l3 6M24 36v6"/></svg>
           <h3>Chemical deep wash</h3>
           <p>Pull-down overhaul with coil chemicals for units that smell, drip or have lost cooling power.</p>
           <ul><li>Pull-down</li><li>Anti-mold</li><li>~2–3 hrs</li></ul>
-          <div class="price">from <b>₱1,800</b></div>
+          <!-- <div class="price">from <b>₱1,800</b></div> -->
         </article>
         <article class="svc">
           <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M28 8l12 12-18 18H10V26z"/><path d="M24 12l12 12"/></svg>
           <h3>Repair & troubleshooting</h3>
           <p>Not cooling, tripping breakers, error codes, noisy fans. We diagnose on site and quote parts upfront.</p>
           <ul><li>Capacitors</li><li>Fan motors</li><li>PCB</li></ul>
-          <div class="price">diagnosis <b>₱500</b></div>
+          <!-- <div class="price">diagnosis <b>₱500</b></div> -->
         </article>
         <article class="svc">
           <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6h12v10a6 6 0 0 1-12 0z"/><path d="M24 22v8"/><circle cx="24" cy="36" r="6"/></svg>
           <h3>Freon recharge</h3>
           <p>Leak test, vacuum and refrigerant top-up for R22, R410A and R32 systems.</p>
           <ul><li>Leak test</li><li>R32 / R410A</li><li>Pressure check</li></ul>
-          <div class="price">from <b>₱1,500</b></div>
+          <!-- <div class="price">from <b>₱1,500</b></div> -->
         </article>
         <article class="svc">
           <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="6" y="8" width="36" height="14" rx="3"/><rect x="12" y="28" width="24" height="14" rx="3"/><circle cx="24" cy="35" r="3.5"/><path d="M24 22v6"/></svg>
           <h3>Installation</h3>
           <p>New split-type and window-type installs, including bracket, piping, wiring and vacuum.</p>
           <ul><li>Up to 10 ft piping</li><li>Mounting</li><li>Test run</li></ul>
-          <div class="price">from <b>₱3,500</b></div>
+          <!-- <div class="price">from <b>₱3,500</b></div> -->
         </article>
         <article class="svc">
           <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="8" y="10" width="32" height="30" rx="4"/><path d="M8 18h32M16 6v8M32 6v8M15 26h6M15 32h6M27 26h6"/></svg>
           <h3>Maintenance plans</h3>
           <p>Scheduled cleaning every 3 or 6 months for homes, offices, clinics and restaurants with several units.</p>
           <ul><li>Quarterly</li><li>Semi-annual</li><li>Priority repair</li></ul>
-          <div class="price">per quote <b>Call us</b></div>
+          <!-- <div class="price">per quote <b>Call us</b></div> -->
         </article>
       </div>
-      <p class="note">Rates shown are sample starting prices. Final price depends on unit type, horsepower and site access.</p>
+      <!-- <p class="note">Rates shown are sample starting prices. Final price depends on unit type, horsepower and site access.</p> -->
     </div>
   </section>
 
+  <!-- ---------- Updated Pricelist ---------- -->
   <section class="sec" id="prices" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div><p class="eyebrow">Pricelist</p><h2>Brand-new aircon units.</h2></div>
-        <p>Brand-new units with full manufacturer warranty. Prices include VAT. The installed price includes our standard installation.</p>
+      <div class="wrap">
+          <div class="sec-head reveal">
+              <div>
+                  <p class="eyebrow">Updated Pricelist</p>
+                  <h2>Find your perfect aircon.</h2>
+              </div>
+
+              <p>
+                  Browse our available split-type inverter air conditioners.
+                  All listed prices include the standard installation package
+                  and the first 10 feet of copper tubing.
+              </p>
+          </div>
+
+          <div class="price-head">
+              <div class="filters" id="priceTabs"
+                  role="group" aria-label="Filter by brand">
+
+                  <button aria-pressed="true" data-t="all">All Brands</button>
+                  <button aria-pressed="false" data-t="american-home">American Home</button>
+                  <button aria-pressed="false" data-t="tcl">TCL</button>
+                  <button aria-pressed="false" data-t="carrier">Carrier</button>
+                  <button aria-pressed="false" data-t="lg">LG</button>
+                  <button aria-pressed="false" data-t="samsung">Samsung</button>
+                  <button aria-pressed="false" data-t="midea">Midea</button>
+                  <button aria-pressed="false" data-t="daikin">Daikin</button>
+                  <button aria-pressed="false" data-t="matrix">Matrix</button>
+              </div>
+
+              <span class="mono"
+                    style="font-size:13px;color:var(--muted)"
+                    id="priceCount"></span>
+          </div>
+
+          <div class="price-wrap reveal">
+              <table class="price-table">
+                  <thead>
+                      <tr>
+                          <th>Brand / Series</th>
+                          <th>Capacity</th>
+                          <th>Package Price</th>
+                          <th><span class="sr-only">Inquire</span></th>
+                      </tr>
+                  </thead>
+                  <tbody id="priceBody"></tbody>
+              </table>
+          </div>
+
+          <!-- Installation notes -->
+          <div class="price-notes">
+              <div class="price-notes__header">
+                  <span class="price-notes__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L3 18l3 3 6.2-6.2a4 4 0 0 0 5.3-5.3L14 13l-3-3 3.5-3.5Z"
+                              stroke="currentColor" stroke-width="1.8"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  </span>
+
+                  <div>
+                      <p class="price-notes__eyebrow">INSTALLATION PACKAGE</p>
+                      <h3>More than just an aircon.</h3>
+                      <p class="price-notes__intro">
+                          Get your new unit installed and ready to cool.
+                      </p>
+                  </div>
+              </div>
+
+              <div class="price-notes__included">
+                  <span class="price-notes__check" aria-hidden="true">✓</span>
+                  <div>
+                      <strong>FREE standard installation</strong>
+                      <p>Includes the first 10 feet of copper tubing.</p>
+                  </div>
+                  <span class="price-notes__tag">INCLUDED</span>
+              </div>
+
+              <div class="price-notes__extra">
+                  <div class="price-notes__section-heading">
+                      <div>
+                          <h4>Additional copper tubing</h4>
+                          <p>For piping beyond the included 10 feet.</p>
+                      </div>
+                      <span class="price-notes__ruler" aria-hidden="true">↔</span>
+                  </div>
+
+                  <div class="price-notes__rates">
+                      <div class="price-notes__rate">
+                          <span>1 HP &amp; 1.5 HP</span>
+                          <strong>₱350 <small>/ ft</small></strong>
+                      </div>
+                      <div class="price-notes__rate">
+                          <span>2 HP</span>
+                          <strong>₱375 <small>/ ft</small></strong>
+                      </div>
+                      <div class="price-notes__rate">
+                          <span>2.5 HP</span>
+                          <strong>₱400 <small>/ ft</small></strong>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="price-notes__disclaimer">
+                  <span aria-hidden="true">i</span>
+                  <p>
+                      Final installation costs may vary depending on site conditions,
+                      piping requirements and accessibility. Additional charges will
+                      be confirmed before installation.
+                  </p>
+              </div>
+          </div>
       </div>
-      <div class="price-head">
-        <div class="filters" id="priceTabs" role="group" aria-label="Unit type">
-          <button aria-pressed="true" data-t="window">Window-type</button>
-          <button aria-pressed="false" data-t="window-inv">Window inverter</button>
-          <button aria-pressed="false" data-t="split">Split-type inverter</button>
-        </div>
-        <span class="mono" style="font-size:13px;color:var(--muted)" id="priceCount"></span>
-      </div>
-      <div class="price-wrap reveal">
-        <table class="price-table">
-          <thead><tr><th>Brand / series</th><th>Capacity</th><th>Unit price</th><th>Installed</th><th><span class="sr-only">Inquire</span></th></tr></thead>
-          <tbody id="priceBody"></tbody>
-        </table>
-      </div>
-      <p class="note">Sample prices. Update them to your current stock and supplier prices. Standard installation: window-type ₱1,000; split-type ₱3,500 (up to 10 ft piping). Extra piping and brackets are quoted on site.</p>
-    </div>
   </section>
 
   <section class="sec process" id="process">
@@ -211,25 +303,8 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div><p class="eyebrow">Photos</p><h2>On the job and with our clients.</h2></div>
-        <div class="filters" id="photoTabs" role="group" aria-label="Filter photos">
-          <button aria-pressed="true" data-g="all">All</button>
-          <button aria-pressed="false" data-g="job">On the job</button>
-          <button aria-pressed="false" data-g="client">Past clients</button>
-        </div>
       </div>
-      <!-- To add your photos: put the image in the images/ folder and copy one <button class="ph-item"> line below.
-           data-g="job" for work photos, data-g="client" for client photos. -->
-      <div class="photos" id="photoGrid">
-        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Indoor unit pull-down cleaning" data-desc="Technician cleaning the blower and evaporator coil of a split-type unit."><img src="images/work-1.jpg" alt="Indoor unit pull-down cleaning" width="1200" height="900" loading="lazy"><span class="g-cap">Indoor unit pull-down cleaning<span>On the job</span></span></button>
-        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Residential client · 3 units" data-desc="Quarterly cleaning for a family home with three split-type units."><img src="images/client-1.jpg" alt="Residential client · 3 units" width="1200" height="900" loading="lazy"><span class="g-cap">Residential client · 3 units<span>Past client</span></span></button>
-        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Outdoor unit coil wash" data-desc="Pressure washing the condenser coil on a rooftop outdoor unit."><img src="images/work-2.jpg" alt="Outdoor unit coil wash" width="900" height="1200" loading="lazy"><span class="g-cap">Outdoor unit coil wash<span>On the job</span></span></button>
-        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Restaurant · maintenance plan" data-desc="Semi-annual maintenance for a dining area and kitchen units."><img src="images/client-2.jpg" alt="Restaurant · maintenance plan" width="900" height="1200" loading="lazy"><span class="g-cap">Restaurant · maintenance plan<span>Past client</span></span></button>
-        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Split-type installation" data-desc="Mounting the bracket and running copper piping for a new install."><img src="images/work-3.jpg" alt="Split-type installation" width="1200" height="800" loading="lazy"><span class="g-cap">Split-type installation<span>On the job</span></span></button>
-        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Clinic waiting area" data-desc="Window-type replacement and cleaning for a medical clinic."><img src="images/client-3.jpg" alt="Clinic waiting area" width="1200" height="800" loading="lazy"><span class="g-cap">Clinic waiting area<span>Past client</span></span></button>
-        <button class="ph-item" data-g="job" data-tag="On the job" data-title="Freon pressure check" data-desc="Reading manifold gauges before a refrigerant top-up."><img src="images/work-4.jpg" alt="Freon pressure check" width="1200" height="900" loading="lazy"><span class="g-cap">Freon pressure check<span>On the job</span></span></button>
-        <button class="ph-item" data-g="client" data-tag="Past client" data-title="Office · 6 units" data-desc="Deep wash and repair for a small office floor."><img src="images/client-4.jpg" alt="Office · 6 units" width="1200" height="900" loading="lazy"><span class="g-cap">Office · 6 units<span>Past client</span></span></button>
-      </div>
-      <p class="note">These are placeholder images. Replace the files in the images/ folder with your own photos, keeping the same file names.</p>
+      <div class="photos" id="photoGrid"></div>
     </div>
   </section>
 
@@ -288,30 +363,63 @@
         <h2 style="font-size:clamp(34px,5vw,58px);margin-top:14px">Tell us what's wrong. We'll bring the tools.</h2>
         <p style="color:var(--muted);margin-top:16px;max-width:44ch">Open Monday to Saturday, 8:00 AM to 6:00 PM. Same-day visits when the schedule allows.</p>
         <div class="contact-list">
-          <div class="contact-row"><div><small>Call or text</small><a class="val" id="phone" href="tel:+639170000000">0917 000 0000</a></div><button class="copy" data-copy="phone">Copy</button></div>
-          <div class="contact-row"><div><small>Email</small><a class="val" id="email" href="mailto:hello@jlaircon.ph?subject=Aircon%20service%20inquiry">hello@jlaircon.ph</a></div><button class="copy" data-copy="email">Copy</button></div>
-          <div class="contact-row"><div><small>Facebook</small><a class="val" href="https://www.facebook.com/" target="_blank" rel="noopener">JL Air Conditioning Services</a></div><a class="copy" href="https://www.facebook.com/" target="_blank" rel="noopener" style="text-decoration:none">Open page ↗</a></div><!-- Replace https://www.facebook.com/ (twice above) with your Facebook page URL -->
+          <div class="contact-row">
+            <div>
+              <small>Call or text</small>
+              <a class="val" id="phone" href="tel:+639914654630">0991 465 4630</a>
+            </div>
+            <button class="copy" data-copy="phone">Copy</button>
+          </div>
+          <div class="contact-row">
+            <div>
+              <small>Call or text</small>
+              <a class="val" id="phone" href="tel:+639104400650">0910 440 0650</a>
+            </div>
+            <button class="copy" data-copy="phone">Copy</button>
+          </div>
+          <!-- <div class="contact-row">
+            <div>
+              <small>Email</small>
+              <a class="val" id="email" href="mailto:hello@jlaircon.ph?subject=Aircon%20service%20inquiry">hello@jlaircon.ph</a>
+            </div>
+            <button class="copy" data-copy="email">Copy</button>
+          </div> -->
+          <div class="contact-row">
+            <div>
+              <small>Facebook</small>
+              <a class="val" href="https://www.facebook.com/JL.airconditioning28" target="_blank" rel="noopener">JL Air Conditioning Services</a>
+            </div>
+            <a class="copy" href="https://www.facebook.com/JL.airconditioning28" target="_blank" rel="noopener" style="text-decoration:none">Open page ↗</a>
+          </div>
         </div>
       </div>
       <form id="bookForm" novalidate class="reveal">
-        <div class="field"><label for="fName">Name</label><input id="fName" required autocomplete="name" placeholder="Juan Dela Cruz"></div>
-        <div class="field"><label for="fPhone">Mobile</label><input id="fPhone" required inputmode="tel" autocomplete="tel" placeholder="09XX XXX XXXX"></div>
+        <div class="field"><label for="fName">Name</label><input id="fName" name="name" required autocomplete="name" placeholder="Juan Dela Cruz"></div>
+        <div class="field"><label for="fPhone">Mobile</label><input id="fPhone" name="mobile" required inputmode="tel" autocomplete="tel" placeholder="09XX XXX XXXX"></div>
         <div class="field"><label for="fService">Service</label>
-          <select id="fService"><option>General cleaning</option><option>Chemical deep wash</option><option>Repair & troubleshooting</option><option>Freon recharge</option><option>Installation</option><option>Maintenance plan</option><option>Buy a new unit</option><option>Others</option></select></div>
+          <select id="fService" name="service">
+            <option>General cleaning</option><option>Chemical deep wash</option><option>Repair &amp; troubleshooting</option><option>Freon recharge</option><option>Installation</option><option>Maintenance plan</option><option>Buy a new unit</option><option>Others</option>
+          </select></div>
         <div class="field"><label for="fType">Unit type</label>
-          <select id="fType"><option>Window-type</option><option>Split-type</option><option>Inverter split-type</option><option>Floor-mounted / cassette</option><option>Not sure</option></select></div>
-        <div class="field"><label for="fUnits">No. of units</label><input id="fUnits" type="number" min="1" value="1"></div>
-        <div class="field"><label for="fDate">Preferred date</label><input id="fDate" type="date"></div>
-        <div class="field full"><label for="fAddr">Address</label><input id="fAddr" required autocomplete="street-address" placeholder="Street, barangay, city"></div>
-        <div class="field full"><label for="fNotes">What's the problem?</label><textarea id="fNotes" placeholder="e.g. 1.5 HP split-type, not cooling, dripping water"></textarea></div>
-        <div class="field full"><button class="btn btn-ice magnetic" type="submit" style="justify-self:start">Prepare booking request</button></div>
+          <select id="fType" name="unit_type">
+            <option>Window-type</option><option>Split-type</option><option>Inverter split-type</option><option>Floor-mounted / cassette</option><option>Not sure</option>
+          </select></div>
+        <div class="field"><label for="fUnits">No. of units</label><input id="fUnits" name="units" type="number" min="1" value="1"></div>
+        <div class="field"><label for="fDate">Preferred date</label><input id="fDate" name="preferred_date" type="date"></div>
+        <div class="field full"><label for="fAddr">Address</label><input id="fAddr" name="address" required autocomplete="street-address" placeholder="Street, barangay, city"></div>
+        <div class="field full"><label for="fNotes">What's the problem?</label><textarea id="fNotes" name="notes" placeholder="e.g. 1.5 HP split-type, not cooling, dripping water"></textarea></div>
+
+        <!-- honeypot: bots fill it, humans never see it -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+
+        <div class="field full"><button class="btn btn-ice magnetic" type="submit" style="justify-self:start">Send booking request</button></div>
         <div class="form-msg" id="formMsg" hidden></div>
       </form>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 JL Air Conditioning Services</span><span><a href="tel:+639170000000">0917 000 0000</a> · <a href="mailto:hello@jlaircon.ph">hello@jlaircon.ph</a> · <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></span></div></footer>
+<footer><div class="wrap"><span>© 2026 JL Air Conditioning Services</span><span><a href="tel:+639914654630">0991 465 4630</a> · <a href="tel:+639104400650">0910 440 0650</a> · <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></span></div></footer>
 <a href="#book" class="btn btn-ice float-call" id="floatBtn">Book now</a>
 
 <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Gallery image">

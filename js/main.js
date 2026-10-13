@@ -20,33 +20,63 @@
   const grid = document.getElementById('gallery-grid');
   grid.innerHTML = items.map((it,i)=>`<button class="g-item ${it.cls}" data-f="${it.f}" data-i="${i}" aria-label="Open ${it.title}">${art[it.a](it.h)}<div class="g-cap">${it.title}<span>${it.tag}</span></div></button>`).join('');
 
-  /* ---------- Lightbox ---------- */
-  const lb = document.getElementById('lightbox'); let cur = 0, lbList = []; let visible = items.map((_,i)=>i);
-  const artSlide = it => ({html:art[it.a](it.h),tag:it.tag,title:it.title,desc:it.desc});
-  const photoSlide = el => {const im=el.querySelector('img'); const w=document.createElement('div'); const c=document.createElement('img'); c.src=im.getAttribute('src'); c.alt=im.alt; w.appendChild(c); return {html:w.innerHTML,tag:el.dataset.tag,title:el.dataset.title,desc:el.dataset.desc};};
-  function openLb(list,i){ lbList=list; cur=i; const it=list[i];
-    document.getElementById('lbArt').innerHTML = it.html;
-    document.getElementById('lbTag').textContent = it.tag;
-    document.getElementById('lbTitle').textContent = it.title;
-    document.getElementById('lbDesc').textContent = it.desc;
-    lb.hidden=false; if(window.gsap) gsap.fromTo('.lb-card',{y:30,scale:.96,opacity:0},{y:0,scale:1,opacity:1,duration:.4,ease:'power3.out'});
-    document.getElementById('lbClose').focus();
-  }
-  function step(d){ openLb(lbList,(cur+d+lbList.length)%lbList.length); }
-  grid.addEventListener('click',e=>{const b=e.target.closest('.g-item'); if(b) openLb(visible.map(i=>artSlide(items[i])),visible.indexOf(+b.dataset.i));});
-  const photoGrid=document.getElementById('photoGrid');
-  photoGrid.addEventListener('click',e=>{const b=e.target.closest('.ph-item'); if(!b) return; const shown=[...photoGrid.querySelectorAll('.ph-item:not([hidden])')]; openLb(shown.map(photoSlide),shown.indexOf(b));});
-  document.querySelectorAll('#photoTabs button').forEach(btn=>btn.addEventListener('click',()=>{
-    document.querySelectorAll('#photoTabs button').forEach(b=>b.setAttribute('aria-pressed',b===btn));
-    const g=btn.dataset.g, els=[...photoGrid.children], show=els.filter(el=>g==='all'||el.dataset.g===g);
-    els.forEach(el=>el.hidden=!show.includes(el));
-    if(window.gsap && !reduce) gsap.fromTo(show,{opacity:0,y:16},{opacity:1,y:0,duration:.45,stagger:.05,ease:'power2.out'});
-  }));
-  document.getElementById('lbClose').onclick=()=>lb.hidden=true;
-  document.getElementById('lbPrev').onclick=()=>step(-1);
-  document.getElementById('lbNext').onclick=()=>step(1);
-  lb.addEventListener('click',e=>{if(e.target===lb) lb.hidden=true;});
-  document.addEventListener('keydown',e=>{ if(lb.hidden) return; if(e.key==='Escape') lb.hidden=true; if(e.key==='ArrowRight') step(1); if(e.key==='ArrowLeft') step(-1); });
+/* ---------- Lightbox ---------- */
+const lb = document.getElementById('lightbox');
+let cur = 0, lbList = [];
+
+const artSlide = it => ({ html: art[it.a](it.h), tag: it.tag, title: it.title, desc: it.desc });
+
+// Reads the <img> as it is right now, so if the onerror fallback
+// swapped in the gray placeholder, the lightbox shows that too.
+const photoSlide = el => {
+  const im = el.querySelector('img');
+  const w = document.createElement('div');
+  const c = document.createElement('img');
+  c.src = im.getAttribute('src');
+  c.alt = im.alt;
+  w.appendChild(c);
+  return { html: w.innerHTML, tag: el.dataset.tag, title: el.dataset.title, desc: el.dataset.desc };
+};
+
+function openLb(list, i) {
+  lbList = list; cur = i;
+  const it = list[i];
+  document.getElementById('lbArt').innerHTML = it.html;
+  document.getElementById('lbTag').textContent = it.tag;
+  document.getElementById('lbTitle').textContent = it.title;
+  document.getElementById('lbDesc').textContent = it.desc;
+  lb.hidden = false;
+  if (window.gsap) gsap.fromTo('.lb-card', { y: 30, scale: .96, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: .4, ease: 'power3.out' });
+  document.getElementById('lbClose').focus();
+}
+function closeLb() { lb.hidden = true; }
+function step(d) { openLb(lbList, (cur + d + lbList.length) % lbList.length); }
+
+// Illustrated gallery (no filtering, so every item is in the list)
+grid.addEventListener('click', e => {
+  const b = e.target.closest('.g-item');
+  if (b) openLb(items.map(artSlide), +b.dataset.i);
+});
+
+// Photos (delegated, so it works for items created by renderPhotos())
+const photoGrid = document.getElementById('photoGrid');
+photoGrid.addEventListener('click', e => {
+  const b = e.target.closest('.ph-item');
+  if (!b) return;
+  const all = [...photoGrid.querySelectorAll('.ph-item')];
+  openLb(all.map(photoSlide), all.indexOf(b));
+});
+
+document.getElementById('lbClose').onclick = closeLb;
+document.getElementById('lbPrev').onclick = () => step(-1);
+document.getElementById('lbNext').onclick = () => step(1);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (lb.hidden) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowRight') step(1);
+  if (e.key === 'ArrowLeft') step(-1);
+});
 
   /* ---------- Filters ---------- */
   document.querySelectorAll('#gallery .filters button').forEach(btn=>btn.addEventListener('click',()=>{
@@ -59,45 +89,138 @@
     else apply();
   }));
 
-  /* ---------- Pricelist ---------- */
-  // Edit prices here. install = standard installation fee added for the "Installed" column.
-  const INSTALL={window:1000,'window-inv':1000,split:3500};
-  const units=[
-    {t:'window',brand:'Condura',series:'Standard window-type',hp:'0.75 HP',price:15500},
-    {t:'window',brand:'Koppel',series:'Standard window-type',hp:'1.0 HP',price:18500},
-    {t:'window',brand:'Carrier',series:'Standard window-type',hp:'1.0 HP',price:19800},
-    {t:'window',brand:'Kolin',series:'Standard window-type',hp:'1.5 HP',price:22900},
-    {t:'window',brand:'Carrier',series:'Standard window-type',hp:'2.0 HP',price:29500},
-    {t:'window-inv',brand:'Carrier',series:'Window inverter',hp:'1.0 HP',price:24900},
-    {t:'window-inv',brand:'Panasonic',series:'Window inverter',hp:'1.0 HP',price:26500},
-    {t:'window-inv',brand:'Condura',series:'Window inverter',hp:'1.5 HP',price:29900},
-    {t:'split',brand:'Aux',series:'Split-type inverter',hp:'1.0 HP',price:26900},
-    {t:'split',brand:'Daikin',series:'Split-type inverter',hp:'1.0 HP',price:38500},
-    {t:'split',brand:'TCL',series:'Split-type inverter',hp:'1.5 HP',price:31500},
-    {t:'split',brand:'Carrier',series:'Split-type inverter',hp:'1.5 HP',price:42900},
-    {t:'split',brand:'Panasonic',series:'Split-type inverter',hp:'1.5 HP',price:44500},
-    {t:'split',brand:'LG',series:'Split-type inverter',hp:'2.0 HP',price:52000},
-    {t:'split',brand:'Samsung',series:'Split-type inverter',hp:'2.5 HP',price:61500},
-  ];
-  const peso=n=>'₱'+n.toLocaleString('en-PH');
-  const priceBody=document.getElementById('priceBody');
-  function renderPrices(t){
-    const rows=units.filter(u=>u.t===t);
-    priceBody.innerHTML=rows.map((u,i)=>`<tr><td class="pbrand"><b>${u.brand}</b><small>${u.series}</small></td><td><span class="hp-chip">${u.hp}</span></td><td><span class="amt">${peso(u.price)}</span></td><td><span class="amt">${peso(u.price+INSTALL[t])}</span><span class="amt-sub">incl. standard install</span></td><td><button class="inq" data-k="${units.indexOf(u)}">Inquire</button></td></tr>`).join('');
-    document.getElementById('priceCount').textContent=rows.length+' units listed';
-    if(window.gsap && !reduce) gsap.fromTo('#priceBody tr',{opacity:0,x:-14},{opacity:1,x:0,duration:.4,stagger:.05,ease:'power2.out'});
-  }
-  document.querySelectorAll('#priceTabs button').forEach(btn=>btn.addEventListener('click',()=>{
-    document.querySelectorAll('#priceTabs button').forEach(b=>b.setAttribute('aria-pressed',b===btn)); renderPrices(btn.dataset.t);
-  }));
-  priceBody.addEventListener('click',e=>{const b=e.target.closest('.inq'); if(!b) return; const u=units[+b.dataset.k];
-    document.getElementById('fService').value='Buy a new unit';
-    document.getElementById('fType').value = u.t==='split'?'Inverter split-type':'Window-type';
-    document.getElementById('fNotes').value=`Interested in: ${u.brand} ${u.hp} ${u.series} (${peso(u.price)}, ${peso(u.price+INSTALL[u.t])} installed)`;
-    document.getElementById('book').scrollIntoView({behavior:reduce?'auto':'smooth'}); setTimeout(()=>document.getElementById('fName').focus({preventScroll:true}),700);
-  });
+/* ---------- Pricelist: JL Air Conditioning Services ---------- */
+/* Prices include the standard installation package shown in the reference image. */
 
-  renderPrices('window');
+const units = [
+    // American Home
+    { t: 'american-home', brand: 'American Home', series: 'MINV Models', hp: '1 HP', price: 23600 },
+    { t: 'american-home', brand: 'American Home', series: 'MINV Models', hp: '1.5 HP', price: 25300 },
+    { t: 'american-home', brand: 'American Home', series: 'MINV Models', hp: '2 HP', price: 32700 },
+    { t: 'american-home', brand: 'American Home', series: 'MINV Models', hp: '2.5 HP', price: 35200 },
+    { t: 'american-home', brand: 'American Home', series: 'MINV Models', hp: '3 HP', price: 64000 },
+
+    // TCL
+    { t: 'tcl', brand: 'TCL', series: '2025 KEI-S AI Full DC Inverter', hp: '1 HP', price: 26500 },
+    { t: 'tcl', brand: 'TCL', series: '2025 KEI-S AI Full DC Inverter', hp: '1.5 HP', price: 27500 },
+    { t: 'tcl', brand: 'TCL', series: '2025 KEI-S AI Full DC Inverter', hp: '2 HP', price: 33300 },
+    { t: 'tcl', brand: 'TCL', series: '2025 KEI-S AI Full DC Inverter', hp: '2.5 HP', price: 35700 },
+    { t: 'tcl', brand: 'TCL', series: '2025 KEI-S AI Full DC Inverter', hp: '3 HP', price: 60000 },
+
+    // Carrier
+    { t: 'carrier', brand: 'Carrier', series: 'Nexus Standard Inverter', hp: '1 HP', price: 29000 },
+    { t: 'carrier', brand: 'Carrier', series: 'Nexus Standard Inverter', hp: '1.5 HP', price: 31700 },
+    { t: 'carrier', brand: 'Carrier', series: 'Nexus Standard Inverter', hp: '2 HP', price: 39300 },
+    { t: 'carrier', brand: 'Carrier', series: 'Nexus Standard Inverter', hp: '2.5 HP', price: 44500 },
+
+    // LG
+    { t: 'lg', brand: 'LG', series: 'Standard Dual Inverter IBA 2025', hp: '1 HP', price: 28000 },
+    { t: 'lg', brand: 'LG', series: 'Standard Dual Inverter IBA 2025', hp: '1.5 HP', price: 30000 },
+    { t: 'lg', brand: 'LG', series: 'Standard Dual Inverter IBA 2025', hp: '2 HP', price: 38500 },
+    { t: 'lg', brand: 'LG', series: 'Standard Dual Inverter IBA 2025', hp: '2.5 HP', price: 41500 },
+
+    // Samsung
+    { t: 'samsung', brand: 'Samsung', series: 'Split AC Standard Digital Inverter', hp: '1 HP', price: 29700 },
+    { t: 'samsung', brand: 'Samsung', series: 'Split AC Standard Digital Inverter', hp: '1.5 HP', price: 34200 },
+    { t: 'samsung', brand: 'Samsung', series: 'Split AC Standard Digital Inverter', hp: '2 HP', price: 38700 },
+    { t: 'samsung', brand: 'Samsung', series: 'Split AC Standard Digital Inverter', hp: '2.5 HP', price: 45900 },
+
+    // Midea
+    { t: 'midea', brand: 'Midea', series: 'Split AC Inverter Celestro', hp: '1 HP', price: 24400 },
+    { t: 'midea', brand: 'Midea', series: 'Split AC Inverter Celestro', hp: '1.5 HP', price: 27400 },
+    { t: 'midea', brand: 'Midea', series: 'Split AC Inverter Celestro', hp: '2 HP', price: 36000 },
+    { t: 'midea', brand: 'Midea', series: 'Split AC Inverter Celestro', hp: '2.5 HP', price: 39300 },
+    { t: 'midea', brand: 'Midea', series: 'Split AC Inverter Celestro', hp: '3 HP', price: 59500 },
+
+    // Daikin
+    { t: 'daikin', brand: 'Daikin', series: 'Split AC Inverter DSMart - Amihan', hp: '1 HP', price: 32000 },
+    { t: 'daikin', brand: 'Daikin', series: 'Split AC Inverter DSMart - Amihan', hp: '1.5 HP', price: 33000 },
+    { t: 'daikin', brand: 'Daikin', series: 'Split AC Inverter DSMart - Prince', hp: '2 HP', price: 45700 },
+    { t: 'daikin', brand: 'Daikin', series: 'Split AC Inverter DSMart - Prince', hp: '2.5 HP', price: 53700 },
+
+    // Matrix
+    { t: 'matrix', brand: 'Matrix', series: 'Super DC Inverter', hp: '1 HP', price: 23700 },
+    { t: 'matrix', brand: 'Matrix', series: 'Super DC Inverter', hp: '1.5 HP', price: 25600 },
+    { t: 'matrix', brand: 'Matrix', series: 'Super DC Inverter', hp: '2 HP', price: 32000 },
+    { t: 'matrix', brand: 'Matrix', series: 'Super DC Inverter', hp: '2.5 HP', price: 35000 },
+];
+
+const peso = n => '₱' + n.toLocaleString('en-PH');
+
+const priceBody = document.getElementById('priceBody');
+const priceCount = document.getElementById('priceCount');
+
+function renderPrices(brand = 'all') {
+    const rows = units.filter(u => brand === 'all' || u.t === brand);
+
+    priceBody.innerHTML = rows.map(u => `
+        <tr>
+            <td class="pbrand">
+                <b>${u.brand}</b>
+                <small>${u.series}</small>
+            </td>
+            <td><span class="hp-chip">${u.hp}</span></td>
+            <td>
+                <span class="amt">${peso(u.price)}</span>
+                <span class="amt-sub">with standard installation</span>
+            </td>
+            <td>
+                <button class="inq" data-k="${units.indexOf(u)}">
+                    Inquire
+                </button>
+            </td>
+        </tr>
+    `).join('');
+
+    priceCount.textContent = `${rows.length} units listed`;
+
+    if (window.gsap && !reduce) {
+        gsap.fromTo(
+            '#priceBody tr',
+            { opacity: 0, x: -14 },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.4,
+                stagger: 0.025,
+                ease: 'power2.out'
+            }
+        );
+    }
+}
+
+document.querySelectorAll('#priceTabs button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('#priceTabs button').forEach(b => {
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+
+        renderPrices(btn.dataset.t);
+    });
+});
+
+priceBody.addEventListener('click', e => {
+    const btn = e.target.closest('.inq');
+    if (!btn) return;
+
+    const u = units[Number(btn.dataset.k)];
+
+    document.getElementById('fService').value = 'Buy a new unit';
+    document.getElementById('fType').value = 'Inverter split-type';
+    document.getElementById('fNotes').value =
+        `Interested in: ${u.brand} ${u.hp} ${u.series}. ` +
+        `Price: ${peso(u.price)}, including standard installation.`;
+
+    document.getElementById('book').scrollIntoView({
+        behavior: reduce ? 'auto' : 'smooth'
+    });
+
+    setTimeout(() => {
+        document.getElementById('fName').focus({ preventScroll: true });
+    }, 700);
+});
+
+renderPrices('all');
 
   /* ---------- Nav ---------- */
   const menuBtn=document.getElementById('menuBtn'), links=document.getElementById('navLinks');
@@ -123,22 +246,53 @@
   function selectFallback(btn){ const t=btn.parentElement.querySelector('b,pre,a.val'); if(!t) return; const r=document.createRange(); r.selectNodeContents(t); const s=getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent='Selected — press Ctrl+C'; }
   document.querySelectorAll('.copy[data-copy]').forEach(b=>b.addEventListener('click',()=>copyText(document.getElementById(b.dataset.copy).textContent,b)));
 
-  /* ---------- Booking form ---------- */
-  const form=document.getElementById('bookForm'), msg=document.getElementById('formMsg');
-  form.addEventListener('submit',e=>{
-    e.preventDefault();
-    const req=['fName','fPhone','fAddr'].filter(id=>!document.getElementById(id).value.trim());
-    if(req.length){ msg.hidden=false; msg.innerHTML='<span class="err">Please fill in your name, mobile number and address so we can reach you.</span>'; document.getElementById(req[0]).focus(); return; }
-    const g=id=>document.getElementById(id).value.trim();
-    const text=`JL Aircon booking request\nName: ${g('fName')}\nMobile: ${g('fPhone')}\nService: ${g('fService')} (${g('fType')}, ${g('fUnits')||1} unit/s)\nPreferred date: ${g('fDate')||'Any'}\nAddress: ${g('fAddr')}\nNotes: ${g('fNotes')||'—'}`;
-    msg.hidden=false;
-    msg.innerHTML='<b>Your request is ready.</b> Copy it and send it by text or Messenger to <a href="tel:+639170000000">0917 000 0000</a>, or <a id="mailReq" href="#">email it to us</a>.<pre></pre><button type="button" class="copy" id="copyReq">Copy request</button>';
-    msg.querySelector('pre').textContent=text;
-    document.getElementById('copyReq').onclick=function(){copyText(text,this);};
-    document.getElementById('mailReq').href='mailto:hello@jlaircon.ph?subject='+encodeURIComponent('Booking request: '+g('fService'))+'&body='+encodeURIComponent(text);
-    if(window.gsap && !reduce) gsap.from(msg,{y:12,opacity:0,duration:.4});
-  });
+/* ---------- Booking form (Formspree) ---------- */
+const FORMSPREE_URL = 'https://formspree.io/f/myekdqpo'; // <- paste yours
+const form = document.getElementById('bookForm'), msg = document.getElementById('formMsg');
 
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const g = id => document.getElementById(id).value.trim();
+  const show = html => {
+    msg.hidden = false;
+    msg.innerHTML = html;
+    if (window.gsap && !reduce) gsap.from(msg, { y: 12, opacity: 0, duration: .4 });
+  };
+
+  const req = ['fName', 'fPhone', 'fAddr'].filter(id => !g(id));
+  if (req.length) {
+    show('<span class="err">Please fill in your name, mobile number and address so we can reach you.</span>');
+    document.getElementById(req[0]).focus();
+    return;
+  }
+
+  const btn = form.querySelector('button[type="submit"]');
+  const label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const data = new FormData(form);
+  data.append('_subject', 'Booking request: ' + g('fService')); // email subject line
+
+  try {
+    const res = await fetch(FORMSPREE_URL, {
+      method: 'POST',
+      body: data,
+      headers: { Accept: 'application/json' }
+    });
+    if (res.ok) {
+      form.reset();
+      show('<b>Thank you!</b> Your booking request was sent. We\'ll contact you shortly.');
+    } else {
+      throw new Error('Formspree error');
+    }
+  } catch (err) {
+    show('<span class="err">Sorry, something went wrong. Please text or call us at <a href="tel:+639170000000">0917 000 0000</a>.</span>');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = label;
+  }
+});
   /* ---------- Animations ---------- */
 
   // Thermostat ticks
@@ -221,3 +375,76 @@
     });
   }
 })();
+
+
+
+/* ---------- Photos data ----------
+   To add a photo: drop the file in images/ and add one line below.
+   tag: 'On the job' or 'Past client'
+   src: leave out to show a gray placeholder
+   w/h: image size, used to reserve space and avoid layout jumps */
+const PHOTOS = [
+  // ----- Real photos (download them from Facebook into images/ first) -----
+  { src: 'images/split-cleaning-1.jpg',  w: 1200, h: 900,  tag: 'On the job',  title: 'Split type cleaning',            desc: 'Technician cleaning the blower and evaporator coil of a split-type unit.' },
+  { src: 'images/split-cleaning-2.jpg',  w: 1200, h: 900,  tag: 'Past client', title: 'Split type cleaning',            desc: 'Quarterly cleaning for a family home with three split-type units.' },
+  { src: 'images/split-install-2hp.jpg', w: 900,  h: 1200, tag: 'On the job',  title: '2HP Split Type Installation',    desc: 'Mounting and installing a 2HP split-type unit.' },
+  { src: 'images/split-cleaning-2u.jpg', w: 900,  h: 1200, tag: 'Past client', title: 'Split type cleaning · 2 units',  desc: 'Semi-annual maintenance for a dining area and kitchen units.' },
+  { src: 'images/window-cleaning-10.jpg',w: 1200, h: 800,  tag: 'On the job',  title: 'Window type cleaning · 10 units',desc: 'Cleaning ten window-type units in one visit.' },
+  { src: 'images/split-cleaning-3u.jpg', w: 1200, h: 800,  tag: 'Past client', title: 'Split type cleaning · 3 units',  desc: 'Cleaning for a medical clinic.' },
+  { src: 'images/freon-charging.jpg',    w: 1200, h: 900,  tag: 'On the job',  title: 'Freon charging · Repair',        desc: 'Reading manifold gauges before a refrigerant top-up.' },
+  { src: 'images/ceiling-suspended.jpg', w: 1200, h: 900,  tag: 'Past client', title: 'Ceiling suspended type · 4 units',desc: 'Installation of ceiling suspended units for a small office.' },
+
+  // ----- Mock items (no src = gray placeholder) -----
+  { w: 1200, h: 900,  tag: 'On the job',  title: 'Photo title 1', desc: 'Short description of this job.' },
+  { w: 900,  h: 1200, tag: 'Past client', title: 'Photo title 2', desc: 'Short description of this job.' },
+  { w: 1200, h: 800,  tag: 'On the job',  title: 'Photo title 3', desc: 'Short description of this job.' },
+  { w: 1200, h: 900,  tag: 'Past client', title: 'Photo title 4', desc: 'Short description of this job.' },
+  { w: 900,  h: 1200, tag: 'On the job',  title: 'Photo title 5', desc: 'Short description of this job.' },
+  { w: 1200, h: 800,  tag: 'Past client', title: 'Photo title 6', desc: 'Short description of this job.' },
+  { w: 1200, h: 900,  tag: 'On the job',  title: 'Photo title 7', desc: 'Short description of this job.' },
+  { w: 900,  h: 1200, tag: 'Past client', title: 'Photo title 8', desc: 'Short description of this job.' },
+];
+
+/* ---------- Render photos ---------- */
+const placeholder = (w, h) =>
+  'data:image/svg+xml,' + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}"><rect width="${w}" height="${h}" fill="#cfdde6"/></svg>`
+  );
+
+function renderPhotos() {
+  const grid = document.getElementById('photoGrid');
+  if (!grid) return;
+  grid.textContent = '';
+
+  PHOTOS.forEach(p => {
+    const w = p.w || 1200, h = p.h || 900;
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'ph-item';
+    btn.dataset.tag = p.tag;
+    btn.dataset.title = p.title;
+    btn.dataset.desc = p.desc;
+
+    const img = document.createElement('img');
+    img.src = p.src || placeholder(w, h);
+    img.alt = p.title;
+    img.width = w;
+    img.height = h;
+    img.loading = 'lazy';
+    // if a file is missing or the link expired, show the gray block instead of a broken icon
+    img.onerror = () => { img.onerror = null; img.src = placeholder(w, h); };
+
+    const cap = document.createElement('span');
+    cap.className = 'g-cap';
+    cap.append(p.title);
+    const tag = document.createElement('span');
+    tag.textContent = p.tag;
+    cap.append(tag);
+
+    btn.append(img, cap);
+    grid.append(btn);
+  });
+}
+
+renderPhotos();
