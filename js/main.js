@@ -385,24 +385,29 @@ form.addEventListener('submit', async e => {
    w/h: image size, used to reserve space and avoid layout jumps */
 const PHOTOS = [
   // ----- Real photos (download them from Facebook into images/ first) -----
-  { src: 'images/split-cleaning-1.jpg',  w: 1200, h: 900,  tag: 'On the job',  title: 'Split type cleaning',            desc: 'Technician cleaning the blower and evaporator coil of a split-type unit.' },
-  { src: 'images/split-cleaning-2.jpg',  w: 1200, h: 900,  tag: 'Past client', title: 'Split type cleaning',            desc: 'Quarterly cleaning for a family home with three split-type units.' },
-  { src: 'images/split-install-2hp.jpg', w: 900,  h: 1200, tag: 'On the job',  title: '2HP Split Type Installation',    desc: 'Mounting and installing a 2HP split-type unit.' },
-  { src: 'images/split-cleaning-2u.jpg', w: 900,  h: 1200, tag: 'Past client', title: 'Split type cleaning · 2 units',  desc: 'Semi-annual maintenance for a dining area and kitchen units.' },
-  { src: 'images/window-cleaning-10.jpg',w: 1200, h: 800,  tag: 'On the job',  title: 'Window type cleaning · 10 units',desc: 'Cleaning ten window-type units in one visit.' },
-  { src: 'images/split-cleaning-3u.jpg', w: 1200, h: 800,  tag: 'Past client', title: 'Split type cleaning · 3 units',  desc: 'Cleaning for a medical clinic.' },
-  { src: 'images/freon-charging.jpg',    w: 1200, h: 900,  tag: 'On the job',  title: 'Freon charging · Repair',        desc: 'Reading manifold gauges before a refrigerant top-up.' },
-  { src: 'images/ceiling-suspended.jpg', w: 1200, h: 900,  tag: 'Past client', title: 'Ceiling suspended type · 4 units',desc: 'Installation of ceiling suspended units for a small office.' },
+  { src: 'images/work-img-1-1.jpg',  w: 1200, h: 900,  tag: 'Past client',  title: '', desc: '' },
+  { src: 'images/work-img-2-1.jpg',  w: 1200, h: 900,  tag: 'Past client', title: '', desc: '' },
+  { src: 'images/work-img-3.jpg', w: 900,  h: 1200, tag: 'Past client',  title: '',    desc: '' },
+  { src: 'images/work-img-4.jpg', w: 900,  h: 1200, tag: 'Past client', title: '',  desc: '' },
+  { src: 'images/work-img-5.jpg',w: 1200, h: 800,  tag: 'Past client',  title: '',desc: '' },
+  { src: 'images/work-img-6.jpg', w: 1200, h: 800,  tag: 'Past client', title: '',  desc: '' },
+  { src: 'images/work-img-7.jpg',    w: 1200, h: 900,  tag: 'Past client',  title: '', desc: '' },
+  { src: 'images/work-img-8.jpg', w: 1200, h: 900,  tag: 'Past client', title: '',desc: '' },
+  { src: 'images/work-img-9.jpg', w: 1200, h: 900,  tag: 'Past client', title: '',desc: '' },
+  { src: 'images/work-img-10.jpg', w: 1200, h: 900,  tag: 'Past client', title: '',desc: '' },
+  { src: 'images/work-img-11.jpg', w: 1200, h: 900,  tag: 'Past client', title: '',desc: '' },
+  { src: 'images/work-img-12.jpg', w: 1200, h: 900,  tag: 'Past client', title: '',desc: '' },
+  { src: 'images/work-img-13.jpg', w: 1200, h: 900,  tag: 'Past client', title: '',desc: '' },
 
   // ----- Mock items (no src = gray placeholder) -----
-  { w: 1200, h: 900,  tag: 'On the job',  title: 'Photo title 1', desc: 'Short description of this job.' },
-  { w: 900,  h: 1200, tag: 'Past client', title: 'Photo title 2', desc: 'Short description of this job.' },
-  { w: 1200, h: 800,  tag: 'On the job',  title: 'Photo title 3', desc: 'Short description of this job.' },
-  { w: 1200, h: 900,  tag: 'Past client', title: 'Photo title 4', desc: 'Short description of this job.' },
-  { w: 900,  h: 1200, tag: 'On the job',  title: 'Photo title 5', desc: 'Short description of this job.' },
-  { w: 1200, h: 800,  tag: 'Past client', title: 'Photo title 6', desc: 'Short description of this job.' },
-  { w: 1200, h: 900,  tag: 'On the job',  title: 'Photo title 7', desc: 'Short description of this job.' },
-  { w: 900,  h: 1200, tag: 'Past client', title: 'Photo title 8', desc: 'Short description of this job.' },
+  // { w: 1200, h: 900,  tag: 'Past client',  title: 'Photo title 1', desc: 'Short description of this job.' },
+  // { w: 900,  h: 1200, tag: 'Past client', title: 'Photo title 2', desc: 'Short description of this job.' },
+  // { w: 1200, h: 800,  tag: 'Past client',  title: 'Photo title 3', desc: 'Short description of this job.' },
+  // { w: 1200, h: 900,  tag: 'Past client', title: 'Photo title 4', desc: 'Short description of this job.' },
+  // { w: 900,  h: 1200, tag: 'Past client',  title: 'Photo title 5', desc: 'Short description of this job.' },
+  // { w: 1200, h: 800,  tag: 'Past client', title: 'Photo title 6', desc: 'Short description of this job.' },
+  // { w: 1200, h: 900,  tag: 'Past client',  title: 'Photo title 7', desc: 'Short description of this job.' },
+  // { w: 900,  h: 1200, tag: 'Past client', title: 'Photo title 8', desc: 'Short description of this job.' },
 ];
 
 /* ---------- Render photos ---------- */
